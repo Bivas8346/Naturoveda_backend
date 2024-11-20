@@ -1,0 +1,81 @@
+<%- include('common/head')%>
+<!-- ======== Preloader =========== -->
+<div id="preloader">
+  <div class="spinner"></div>
+</div>
+<!-- ======== Preloader =========== -->
+
+<%- include('common/sidebar')%>
+
+<!-- ======== main-wrapper start =========== -->
+<main class="main-wrapper">
+  <%- include('common/navbar')%>
+
+  <!-- ========== notification-wrapper start ========== -->
+  <div class="notification-wrapper">
+    <div class="container-fluid">
+      <!-- ========== title-wrapper start ========== -->
+      <div class="title-wrapper pt-30">
+        <div class="row align-items-center">
+          <div class="col-md-6">
+            <div class="title">
+              <h2>Notifications</h2>
+            </div>
+          </div>
+          <!-- end col -->
+          <div class="col-md-6">
+            <div class="breadcrumb-wrapper">
+              <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                  <li class="breadcrumb-item">
+                    <a href="#0">Dashboard</a>
+                  </li>
+                  <li class="breadcrumb-item active" aria-current="page">
+                    Contact Notifications
+                  </li>
+                </ol>
+              </nav>
+            </div>
+          </div>
+          <!-- end col -->
+        </div>
+        <!-- end row -->
+      </div>
+      <!-- ========== title-wrapper end ========== -->
+
+      <div class="card-style">
+        <%for(let data of notification){%>
+        <div class="single-notification">
+          <div class="notification">
+            <div class="image secondary-bg">
+              <span><%=data.name.toString().slice(0,1)%></span>
+            </div>
+            <a href="#0" class="content">
+              <h6><%= data.name%></h6>
+              <p class="text-sm text-medium text-black"><%= data.phone%></p>
+              <p class="text-sm text-gray"><%= data.message%></p>
+              <span class="text-sm text-medium text-gray"
+                ><%= data.createdAt.toString().slice(0,15)%></span
+              >
+            </a>
+          </div>
+          <div class="action">
+            <button class="delete-btn">
+              <a href="/notificationDelete/<%= data._id%>" style="color: red">
+                <i class="lni lni-trash-can"></i>
+              </a>
+            </button>
+          </div>
+        </div>
+        <%}%>
+        <!-- end single notification -->
+      </div>
+    </div>
+    <!-- end container -->
+  </div>
+  <!-- ========== notification-wrapper start ========== -->
+  <%- include('common/footer')%>
+</main>
+<!-- ======== main-wrapper end =========== -->
+
+<%- include('common/foot')%>

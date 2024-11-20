@@ -1,0 +1,110 @@
+<%- include('common/head')%>
+<!-- ======== Preloader =========== -->
+<div id="preloader">
+  <div class="spinner"></div>
+</div>
+<!-- ======== Preloader =========== -->
+
+<%- include('common/sidebar')%>
+<!-- ======== main-wrapper start =========== -->
+<main class="main-wrapper">
+  <%- include('common/navbar')%>
+  <!-- Message Section  -->
+  <% if (message.length>0) {%>
+  <div class="alert alert-success"><%= message %></div>
+  <%}%>
+
+  <!-- ========== section start ========== -->
+  <section class="section">
+    <div class="container-fluid">
+      <!-- ========== title-wrapper start ========== -->
+      <div class="title-wrapper pt-30">
+        <div class="row align-items-center">
+          <div class="col-md-6">
+            <div class="title">
+              <h2>Naturoveda Dashboard</h2>
+            </div>
+          </div>
+          <!-- end col -->
+          <div class="col-md-6">
+            <div class="breadcrumb-wrapper">
+              <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                  <li class="breadcrumb-item">
+                    <a href="#0">Dashboard</a>
+                  </li>
+                </ol>
+              </nav>
+            </div>
+          </div>
+          <!-- end col -->
+        </div>
+        <!-- end row -->
+      </div>
+      <!-- ========== title-wrapper end ========== -->
+      <!-- ========== section start ========== -->
+      <section class="section">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="card-style settings-card-1 mb-30">
+                <div
+                  class="title mb-30 d-flex justify-content-between align-items-center"
+                >
+                  <h6>Admin Profile</h6>
+                </div>
+                <div class="profile-info">
+                  <div class="d-flex align-items-center mb-30">
+                    <div class="profile-image">
+                      <img src="<%= data.image%>" alt="image" height="100%" />
+                    </div>
+                    <div class="profile-meta">
+                      <h5 class="text-bold text-dark mb-10"><%= data.name%></h5>
+                      <p class="text-sm text-gray"><%= data.type%></p>
+                    </div>
+                  </div>
+                  <div class="input-style-1">
+                    <label>Email</label>
+                    <input
+                      type="email"
+                      placeholder="<%= data.email%>"
+                      value="<%= data.email%>"
+                    />
+                  </div>
+                  <div class="input-style-1">
+                    <label>Phone</label>
+                    <input type="tel" value="<%= data.phone%>" />
+                  </div>
+                  <div class="input-style-1">
+                    <label>Website</label>
+                    <input
+                      type="text"
+                      placeholder="https://www.naturoveda.com/"
+                      value="www.naturoveda.com"
+                    />
+                  </div>
+                </div>
+                <div class="action">
+                  <button class="edit">
+                    <a href="/updatePass">
+                      <i class="lni lni-pencil"></i>
+                    </a>
+                  </button>
+                </div>
+              </div>
+              <!-- end card -->
+            </div>
+            <!-- end col -->
+          </div>
+          <!-- end row -->
+        </div>
+        <!-- end container -->
+      </section>
+      <!-- ========== section end ========== -->
+    </div>
+    <!-- end container -->
+  </section>
+  <!-- ========== section end ========== -->
+  <%- include('common/footer')%>
+</main>
+<%- include('common/foot')%>

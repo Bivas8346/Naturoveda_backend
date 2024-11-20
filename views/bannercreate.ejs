@@ -1,0 +1,156 @@
+<%- include('common/head')%>
+<!-- ======== Preloader =========== -->
+<div id="preloader">
+  <div class="spinner"></div>
+</div>
+<!-- ======== Preloader =========== -->
+
+<%- include('common/sidebar')%>
+
+<!-- ======== main-wrapper start =========== -->
+<main class="main-wrapper">
+  <%- include('common/navbar')%>
+  <!-- Message Section  -->
+  <% if (message.length>0) {%>
+  <div class="alert alert-success" style="width: 325px;"><%= message %></div>
+  <%}%>
+
+  <!-- ========== tab components start ========== -->
+  <section class="tab-components">
+    <div class="container-fluid">
+      <!-- ========== title-wrapper start ========== -->
+      <div class="title-wrapper pt-30">
+        <div class="row align-items-center">
+          <div class="col-md-6">
+            <div class="title">
+              <h2>Form Elements</h2>
+            </div>
+          </div>
+          <!-- end col -->
+          <div class="col-md-6">
+            <div class="breadcrumb-wrapper">
+              <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                  <li class="breadcrumb-item">
+                    <a href="#0">Dashboard</a>
+                  </li>
+                  <li class="breadcrumb-item"><a href="#0">Forms</a></li>
+                  <li class="breadcrumb-item active" aria-current="page">
+                    Banner Elements
+                  </li>
+                </ol>
+              </nav>
+            </div>
+          </div>
+          <!-- end col -->
+        </div>
+        <!-- end row -->
+      </div>
+      <!-- ========== title-wrapper end ========== -->
+
+      <!-- ========== form-elements-wrapper start ========== -->
+      <div class="form-elements-wrapper">
+        <div class="row">
+          <div class="col-lg-5">
+            <!-- input style start -->
+            <form
+              action="/banneradd/create"
+              method="post"
+              enctype="multipart/form-data"
+            >
+              <div class="card-style mb-30">
+                <h6 class="mb-25">Input Fields</h6>
+                <div class="input-style-1">
+                  <label>Banner Title</label>
+                  <input type="text" placeholder="Banner Title" name="title" />
+                </div>
+                <!-- end input -->
+                <div class="input-style-1">
+                  <label>Banner Description</label>
+                  <textarea
+                    placeholder="Add Description"
+                    name="description"
+                    rows="5"
+                  ></textarea>
+                </div>
+                <!-- end textarea -->
+                <div class="input-style-2">
+                  <label>Banner Image</label>
+                  <input type="file" placeholder="Image" name="image" />
+                  <span class="icon"> <i class="lni lni-save"></i></span>
+                </div>
+                <!-- end input -->
+                <button class="main-btn active-btn rounded-full btn-hover">
+                  Submit
+                </button>
+              </div>
+            </form>
+            <!-- end card -->
+            <!-- ======= input style end ======= -->
+          </div>
+          <!-- end col -->
+          <div class="col-lg-7">
+            <!-- input style start -->
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">All Banner</h3>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+                <table id="example2" class="table table-hover">
+                  <thead>
+                    <tr>
+                      <th>Title</th>
+                      <th>Sub Title</th>
+                      <th></th>
+                      <th>Image</th>
+                      <th>delete</th>
+                    </tr>
+                  </thead>
+
+                  <tbody>
+                    <% for(let data of banner){%>
+                    <tr>
+                      <td><%=data.title%></td>
+                      <td><%=data.description%></td>
+                      <td></td>
+                      <!-- uploads\1689934057439.jpg -->
+                      <td>
+                        <img
+                          src="<%=data.image%>"
+                          alt="banner image"
+                          width="20%"
+                          height="20%"
+                        />
+                      </td>
+                      <td>
+                        <a
+                          href="/bannerDelete/<%= data._id%>"
+                          class="btn btn-danger"
+                          >Delete</a
+                        >
+                      </td>
+                    </tr>
+                    <%} %>
+                  </tbody>
+                </table>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- end card -->
+            <!-- ======= input style end ======= -->
+          </div>
+          <!-- end col -->
+        </div>
+        <!-- end row -->
+      </div>
+      <!-- ========== form-elements-wrapper end ========== -->
+    </div>
+    <!-- end container -->
+  </section>
+  <!-- ========== tab components end ========== -->
+
+  <%- include('common/footer')%>
+</main>
+<!-- ======== main-wrapper end =========== -->
+<%- include('common/foot')%>

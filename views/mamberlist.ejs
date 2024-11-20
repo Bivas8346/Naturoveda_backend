@@ -1,0 +1,136 @@
+<%- include('common/head')%>
+<!-- ======== Preloader =========== -->
+<div id="preloader">
+  <div class="spinner"></div>
+</div>
+<!-- ======== Preloader =========== -->
+
+<%- include('common/sidebar')%>
+
+<!-- ======== main-wrapper start =========== -->
+<main class="main-wrapper">
+  <%- include('common/navbar')%>
+
+  <!-- ========== table components start ========== -->
+  <section class="table-components">
+    <div class="container-fluid">
+      <!-- ========== title-wrapper start ========== -->
+      <div class="title-wrapper pt-30">
+        <div class="row align-items-center">
+          <div class="col-md-6">
+            <div class="title">
+              <h2>Tables</h2>
+            </div>
+          </div>
+          <!-- end col -->
+          <div class="col-md-6">
+            <div class="breadcrumb-wrapper">
+              <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                  <li class="breadcrumb-item">
+                    <a href="#0">Dashboard</a>
+                  </li>
+                  <li class="breadcrumb-item active" aria-current="page">
+                    Team Mambers
+                  </li>
+                </ol>
+              </nav>
+            </div>
+          </div>
+          <!-- end col -->
+        </div>
+        <!-- end row -->
+      </div>
+      <!-- ========== title-wrapper end ========== -->
+
+      <!-- ========== tables-wrapper start ========== -->
+      <div class="tables-wrapper">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="card-style mb-30">
+              <div class="table-wrapper table-responsive">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th class="lead-info">
+                        <h6>Name</h6>
+                      </th>
+                      <th class="lead-email">
+                        <h6>Email</h6>
+                      </th>
+                      <th class="lead-phone">
+                        <h6>Phone No</h6>
+                      </th>
+                      <th class="lead-company">
+                        <h6>Designation</h6>
+                      </th>
+                      <th>
+                        <h6>Action</h6>
+                      </th>
+                    </tr>
+                    <!-- end table row-->
+                  </thead>
+                  <tbody>
+                    <%for(let data of admin){%>
+                    <tr>
+                      <td class="min-width">
+                        <div class="lead">
+                          <div class="lead-image">
+                            <img src="<%= data.image%>" alt="Profile Image" width="100%" height="100%"/>
+                          </div>
+                          <div class="lead-text">
+                            <p><%= data.name %></p>
+                          </div>
+                        </div>
+                      </td>
+                      <td class="min-width">
+                        <p><a href="#0"><%= data.email %></a></p>
+                      </td>
+                      <td class="min-width">
+                        <p><%= data.phone %></p>
+                      </td>
+                      <td class="min-width">
+                        <p><%= data.type %></p>
+                      </td>
+                      <td>
+                        <div class="action">
+                          <button class="edit">
+                            <a href="/editlist/<%= data._id%>">
+                              <i class="lni lni-pencil"></i>
+                            </a>
+                          </button>
+                          <button class="text-danger">
+                            <a
+                              href="/admindelete/<%=data._id%>"
+                              style="color: red"
+                            >
+                              <i class="lni lni-trash-can"></i>
+                            </a>
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
+                    <%}%>
+                    <!-- end table row -->
+                  </tbody>
+                </table>
+                <!-- end table -->
+              </div>
+            </div>
+            <!-- end card -->
+          </div>
+          <!-- end col -->
+        </div>
+        <!-- end row -->
+      </div>
+      <!-- ========== tables-wrapper end ========== -->
+    </div>
+    <!-- end container -->
+  </section>
+  <!-- ========== table components end ========== -->
+
+  <%- include('common/footer')%>
+</main>
+<!-- ======== main-wrapper end =========== -->
+
+<%- include('common/foot')%>

@@ -1,0 +1,174 @@
+<%- include('common/head')%>
+<!-- ======== Preloader =========== -->
+<div id="preloader">
+  <div class="spinner"></div>
+</div>
+<!-- ======== Preloader =========== -->
+
+<%- include('common/sidebar')%>
+
+<!-- ======== main-wrapper start =========== -->
+<main class="main-wrapper">
+  <%- include('common/navbar')%>
+
+  <!-- ========== tab components start ========== -->
+  <section class="tab-components">
+    <div class="container-fluid">
+      <!-- ========== title-wrapper start ========== -->
+      <div class="title-wrapper pt-30">
+        <div class="row align-items-center">
+          <div class="col-md-6">
+            <div class="title">
+              <h2>Form Elements</h2>
+            </div>
+          </div>
+          <!-- end col -->
+          <div class="col-md-6">
+            <div class="breadcrumb-wrapper">
+              <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                  <li class="breadcrumb-item">
+                    <a href="#0">Dashboard</a>
+                  </li>
+                  <li class="breadcrumb-item"><a href="#0">Forms</a></li>
+                  <li class="breadcrumb-item active" aria-current="page">
+                    Testimonials Elements
+                  </li>
+                </ol>
+              </nav>
+            </div>
+          </div>
+          <!-- end col -->
+        </div>
+        <!-- end row -->
+      </div>
+      <!-- ========== title-wrapper end ========== -->
+
+      <!-- ========== form-elements-wrapper start ========== -->
+      <div class="form-elements-wrapper">
+        <div class="row">
+          <div class="col-lg-5">
+            <!-- input style start -->
+            <form action="/testimonials/create" method="post">
+              <div class="card-style mb-30">
+                <h6 class="mb-25">Input Fields</h6>
+                <div class="input-style-1">
+                  <label>Clients Name</label>
+                  <input
+                    type="text"
+                    placeholder="Clients Name"
+                    name="clients_name"
+                  />
+                </div>
+                <!-- end input -->
+                <div class="input-style-1">
+                  <label>Disease Title</label>
+                  <input
+                    type="text"
+                    placeholder="Disease Title"
+                    name="disease_title"
+                  />
+                </div>
+                <!-- end input -->
+                <div class="input-style-1">
+                  <label>Patient Id</label>
+                  <input
+                    type="text"
+                    placeholder="Patient Id"
+                    name="patient_id"
+                  />
+                </div>
+                <!-- end input -->
+                <div class="input-style-1">
+                  <label>Clients Review</label>
+                  <textarea
+                    placeholder="Clients Review"
+                    name="clients_review"
+                    rows="5"
+                  ></textarea>
+                </div>
+                <!-- end textarea -->
+                <div class="input-style-2">
+                  <label>Banner Image</label>
+                  <input type="text" placeholder="Image" name="image" />
+                  <span class="icon"> <i class="lni lni-save"></i></span>
+                </div>
+              </div>
+              <!-- end input -->
+              <button class="main-btn active-btn rounded-full btn-hover">
+                Submit
+              </button>
+            </form>
+            <!-- end card -->
+            <!-- ======= input style end ======= -->
+          </div>
+          <!-- end col -->
+          <div class="col-lg-7">
+            <!-- input style start -->
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">All Banner</h3>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+                <table id="example2" class="table table-hover">
+                  <thead>
+                    <tr>
+                      <th>Title</th>
+                      <th>Review</th>
+                      <th>Sub Title</th>
+                      <th>Image</th>
+                      <th>Id</th>
+                      <th>delete</th>
+                    </tr>
+                  </thead>
+
+                  <tbody>
+                    <% for(let data of testimonials){%>
+                    <tr>
+                      <td><%=data.clients_name%></td>
+                      <td><%=data.clients_review%></td>
+
+                      <!-- uploads\1689934057438.jpg -->
+                      <td>
+                        <p><%=data.disease_title%></p>
+                      </td>
+
+                      <!-- uploads\1689934057439.jpg -->
+                      <td>
+                        <p><%=data.image%></p>
+                      </td>
+                      <td>
+                        <p><%=data.patient_id%></p>
+                      </td>
+                      <td>
+                        <a
+                          href="/testimonialsDelete/<%= data._id%>"
+                          class="btn btn-danger"
+                          >Delete</a
+                        >
+                      </td>
+                    </tr>
+                    <%} %>
+                  </tbody>
+                </table>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- end card -->
+            <!-- ======= input style end ======= -->
+          </div>
+          <!-- end col -->
+        </div>
+        <!-- end row -->
+      </div>
+      <!-- ========== form-elements-wrapper end ========== -->
+    </div>
+    <!-- end container -->
+  </section>
+  <!-- ========== tab components end ========== -->
+
+  <%- include('common/footer')%>
+</main>
+<!-- ======== main-wrapper end =========== -->
+<%- include('common/foot')%>
